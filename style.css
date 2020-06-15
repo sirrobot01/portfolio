@@ -24,9 +24,6 @@ body {
     font-size: 80px;
 }
 
-.intro div {
-    display: table;
-}
 
 .about-me div {
     font-size: 25px;
@@ -49,6 +46,43 @@ a:hover {
     color: white;
 }
 
+.contact-text {
+    font-size: 50px
+}
+
+.intro-small {
+    font-size: 40px;
+    text-decoration: underline
+}
+
+@media screen and (max-width: 500px) {
+    .intro div {
+        font-size: 40px;
+    }
+
+    .intro-small {
+        font-size: 25px;
+    }
+
+    .about-me div {
+        font-size: 30px;
+        width: 80%;
+    }
+
+
+    #about-me div {
+        display: table;
+        font-size: 15px;
+        width: 80%;
+
+    }
+
+    .contact-text {
+        font-size: 40px
+    }
+
+
+}
 
 
 
