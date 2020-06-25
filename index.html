@@ -25,30 +25,42 @@
         <div class="collapse navbar-collapse" id="collapsingNavbar">
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0 text-right">
                 <li class="nav-item pr-3">
-                    <a class="nav-link hvr-underline-from-right" href="https://blog.biodun.dev">Blog</a>
-                </li>
-                <li class="nav-item pr-3">
                     <a class="nav-link hvr-underline-from-right" href="#about-me">About me</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link hvr-underline-from-right" href="#contact">Contact</a>
+                </li>
+                <li class="nav-item pr-3">
+                    <a class="nav-link hvr-underline-from-right" target="_blank" href="https://blog.biodun.dev">Blog</a>
                 </li>
             </ul>
         </div>
     </nav>
 </div>
 
+<div class="navigator hvr-icon-bob" onclick="scrollToTop()"><i class="fas fa-level-up-alt hvr-icon"></i></div>
+
 <div class="intro text-center">
     <div>Hi, I am Mukhtar <br>
-        <small class="intro-small">A Software Developer</small>
+        <small class="intro-small">A FullStack Developer</small>
     </div>
 </div>
 
 <div id="about-me" class="about-me text-center">
     <div>
-        I am FullStack developer, I uses Python(Django) primarily, with React.js<br> during the day, a Philosophy enthusiast
-        during
-        the night.<br>
+        I am FullStack developer, I uses Python(Django) for Backend development, and React.js for frontend
+        development<br><br>
+        When not on the keyboard, I watch football, I read historical books. I am also enthusiastic about philosophy,
+        politics,
+        religion, I love the planet Mars(Curiosity Rover is representing in the red planet <span style="color: red">&hearts;</span>).
+        cultures and entertainment. I have a pinch for learning as it gives me the opportunity to see the world in a
+        different way.
+        <a href="https://en.wikipedia.org/wiki/Gautama_Buddha">Gautama Buddha</a> is one philosopher I like, Confucious
+        is another.<br><br>
+        I will end this with a quote from Buddha which says
+        <blockquote><b>I never see what has been done; I only see what remains to be done</b></blockquote>
+        <small class="text-right">(Buddha)</small><br>
+
         <i class="fab fa-python hvr-bounce-in"></i> &nbsp; <i class="fab fa-react hvr-bounce-in"></i> &nbsp; <i
             class="fab fa-aws hvr-bounce-in"></i> &nbsp; <i
             class="fab fa-docker hvr-bounce-in"></i>
@@ -64,25 +76,29 @@
            target="_blank">Send me an email</a> <br>
         <div class="text-center">
             <a href="https://twitter.com/i_am_cy01" target="_blank"><i class="fab fa-twitter fa-2x"></i></a> &nbsp;
-        <a href="https://github.com/sirrobot01" target="_blank"><i class="fab fa-github fa-2x"></i></a> &nbsp;
-        <a href="https://linkedin.com/in/sirrobot01" target="_blank"><i class="fab fa-linkedin-in fa-2x"></i></a> &nbsp;
+            <a href="https://github.com/sirrobot01" target="_blank"><i class="fab fa-github fa-2x"></i></a> &nbsp;
+            <a href="https://linkedin.com/in/sirrobot01" target="_blank"><i class="fab fa-linkedin-in fa-2x"></i></a>
+            &nbsp;
         </div>
     </div>
 
-
 </div>
 <!-- JS, Popper.js, and jQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+<script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
         crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
 <script>
     $(document).scroll(function () {
-    let $nav = $(".navbar");
-    $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
-  });
+        let $nav = $(".navbar");
+        $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+        $('.navigator').css('display', 'block')
+    });
+
+    const scrollToTop = () => $(window).scrollTop(0);
 </script>
 </body>
 </html>
