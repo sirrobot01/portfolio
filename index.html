@@ -95,8 +95,18 @@
     $(document).scroll(function () {
         let $nav = $(".navbar");
         $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
-        $('.navigator').css('display', 'block')
+        scrollFunction()
     });
+
+    let navigator = $('.navigator')
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            navigator.css('display', 'block')
+        } else {
+            navigator.css('display', 'none')
+        }
+    }
 
     const scrollToTop = () => $(window).scrollTop(0);
 </script>
