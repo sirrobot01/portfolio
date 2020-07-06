@@ -33,7 +33,7 @@
             document.documentElement.setAttribute("data-theme", currentTheme ? currentTheme : "light");
 
             let themeSwitcher = document.getElementById("theme-switcher");
-            themeSwitcher.innerHTML = Theme[currentTheme]
+            themeSwitcher.innerHTML = Theme[currentTheme] ? Theme[currentTheme] : Theme["dark"]
 
             // When our button gets clicked
             themeSwitcher.onclick = function () {
