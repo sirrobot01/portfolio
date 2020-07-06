@@ -25,19 +25,26 @@ body {
 
 }
 
-.intro, .about-me, #contact, #project {
+.intro, .about-me, #contact {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+
+#project {
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    display: grid;
+
+}
 .intro div {
     font-size: 80px;
 }
 
 
-#project div,
 #about-me div {
     display: table;
     font-size: 25px;
@@ -54,7 +61,7 @@ a:hover {
 }
 
 .contact-text {
-    font-size: 50px
+    font-size: 30px
 }
 
 .intro-small {
@@ -99,7 +106,6 @@ a:hover {
     }
 
 
-    #project div,
     #about-me div {
         display: table;
         font-size: 15px;
@@ -110,7 +116,40 @@ a:hover {
     .contact-text {
         font-size: 40px
     }
+}
 
+
+.card {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 8px;
+    border-top: 3px solid #85144b;
+
+}
+
+.fa-twitter {
+    color: #1DA1F2;
+}
+
+.fa-linkedin-in {
+    color: #2867B2;
+}
+
+.fa-react {
+    color: #00d8ff;
+
+}
+
+.fa-aws {
+    color: #ff9900;
+}
+
+.fa-docker {
+    color: #0db7ed;
+}
+
+.fa-python {
+    color: #ffde57;
 }
 
 
