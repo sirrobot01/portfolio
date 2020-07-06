@@ -18,7 +18,7 @@
 
 .navbar-toggler span {
    display: block;
-   background-color: white;
+   background-color: var(--bg-color);
    height: 3px;
    width: 25px;
    margin-top: 4px;
@@ -71,11 +71,11 @@
 }
 
 .hvr-underline-from-right:before {
-    background: white;
+    background: var(--bg-color);
     border-radius: 0.2rem;
 }
 
 .navbar.scrolled {
-  background-color: #32363d !important;
+  background-color: var(--nav-bar-scrolled) !important;
   transition: background-color 200ms linear;
 }

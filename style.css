@@ -1,6 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 
 
+:root {
+    --bg-color: #fff;
+    --text-color: #000;
+    --nav-bar-scrolled: #fff;
+}
+
+[data-theme="dark"] {
+    --bg-color: #343942;
+    --text-color: #fff;
+    --nav-bar-scrolled: #32363d;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -8,8 +20,8 @@ html {
 body {
     font-family: 'Raleway', sans-serif;
     overflow-x: hidden;
-    background-color: #343942;
-    color: white;
+    background-color: var(--bg-color);
+    color: var(--text-color);
 
 }
 
@@ -34,11 +46,11 @@ body {
 }
 
 a {
-    color: white;
+    color: var(--text-color);
 }
 
 a:hover {
-    color: white;
+    color: var(--text-color);
 }
 
 .contact-text {
@@ -55,15 +67,27 @@ a:hover {
     right: 30px;
     z-index: 99;
     font-size: 18px;
-    border: 2px solid white;
+    border: 2px solid var(--bg-color);
     outline: none;
     display: none;
-    color: white;
+    color: var(--text-color);
     cursor: pointer;
     padding: 15px;
     border-radius: 10px;
 }
 
+.theme-switch-button {
+    position: fixed;
+    bottom: 20px;
+    left: 30px;
+    z-index: 99;
+    border: 2px solid var(--bg-color);
+    outline: none;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+}
 
 @media screen and (max-width: 500px) {
     .intro div {
