@@ -5,12 +5,14 @@
     --bg-color: #fff;
     --text-color: #000;
     --nav-bar-scrolled: #fff;
+    --back-image: url("https://scitechdaily.com/images/First-Humans-on-Mars-scaled.jpg");
 }
 
 [data-theme="dark"] {
     --bg-color: #343942;
     --text-color: #fff;
     --nav-bar-scrolled: #32363d;
+    --back-image: url("https://www.vaisala.com/sites/default/files/styles/16_9_liftup_extra_large/public/images/LIFT-Mars%20the%20Red%20Planet-1600x900.jpg?itok=YXq-Cv1K");
 }
 
 html {
@@ -32,6 +34,10 @@ body {
     justify-content: center;
 }
 
+
+.intro {
+    background-image: var(--back-image);
+}
 
 #project {
     align-items: center;
@@ -74,7 +80,7 @@ a:hover {
     right: 30px;
     z-index: 99;
     font-size: 18px;
-    border: 2px solid var(--bg-color);
+    border: none
     outline: none;
     display: none;
     color: var(--text-color);
@@ -88,10 +94,9 @@ a:hover {
     bottom: 20px;
     left: 30px;
     z-index: 99;
-    border: 2px solid var(--bg-color);
+    border: none;
     outline: none;
     color: var(--text-color);
-    cursor: pointer;
     padding: 10px;
     border-radius: 10px;
 }
@@ -151,7 +156,4 @@ a:hover {
 .fa-python {
     color: #ffde57;
 }
-
-
-
 

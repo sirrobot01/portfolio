@@ -13,58 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="style.css">
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-175548947-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-175548947-1');
-    </script>
-
-    <script type="text/javascript">
-        // Wait for document to load
-        document.addEventListener("DOMContentLoaded", function (event) {
-            let currentTheme = localStorage.getItem("data-theme")
-            const Theme = {
-                "dark": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\"\n" +
-                    "         stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n" +
-                    "        <path d=\"M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z\"></path>\n" +
-                    "    </svg>",
-                "light": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" " +
-                    "viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">" +
-                    "<circle cx=\"12\" cy=\"12\" r=\"5\"></circle>" +
-                    "<line x1=\"12\" y1=\"1\" x2=\"12\" y2=\"3\"></line>" +
-                    "<line x1=\"12\" y1=\"21\" x2=\"12\" y2=\"23\"></line>" +
-                    "<line x1=\"4.22\" y1=\"4.22\" x2=\"5.64\" y2=\"5.64\"></line>" +
-                    "<line x1=\"18.36\" y1=\"18.36\" x2=\"19.78\" y2=\"19.78\"></line>" +
-                    "<line x1=\"1\" y1=\"12\" x2=\"3\" y2=\"12\"></line>" +
-                    "<line x1=\"21\" y1=\"12\" x2=\"23\" y2=\"12\"></line>" +
-                    "<line x1=\"4.22\" y1=\"19.78\" x2=\"5.64\" y2=\"18.36\"></line>" +
-                    "<line x1=\"18.36\" y1=\"5.64\" x2=\"19.78\" y2=\"4.22\"></line>" +
-                    "</svg>"
-            }
-            document.documentElement.setAttribute("data-theme", currentTheme ? currentTheme : "light");
-
-            let themeSwitcher = document.getElementById("theme-switcher");
-            themeSwitcher.innerHTML = Theme[currentTheme] ? Theme[currentTheme] : Theme["dark"]
-
-            // When our button gets clicked
-            themeSwitcher.onclick = function () {
-                // Get the current selected theme, on the first run
-                // it should be `light`
-                let currentTheme = document.documentElement.getAttribute("data-theme");
-
-                // Switch between `dark` and `light`
-                let switchToTheme = currentTheme === "dark" ? "light" : "dark"
-
-                // Set our currenet theme to the new one
-                document.documentElement.setAttribute("data-theme", switchToTheme);
-                themeSwitcher.innerHTML = Theme[currentTheme]
-                localStorage.setItem("data-theme", switchToTheme)
-            }
-        });
-    </script>
+    
     <link rel="stylesheet" href="navbar.css">
     <title>Mukhtar Akere</title>
 </head>
@@ -100,16 +49,12 @@
 </div>
 
 <div class="navigator hvr-icon-bob" onclick="scrollToTop()"><i class="fas fa-level-up-alt hvr-icon"></i></div>
-<div id="theme-switcher" class="theme-switch-button">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-    </svg>
+<div id="theme-switcher" class="theme-switch-button">  
 </div>
 
 <div class="intro text-center">
     <div>Hi, I am Mukhtar <br>
-        <small class="intro-small">A FullStack Developer</small>
+        <small class="intro-small">I write codes and watch Mars documentaries</small>
     </div>
 </div>
 
@@ -119,16 +64,17 @@
             <h3 class="text-center">About me</h3>
             <hr>
         </div>
-        I am FullStack developer, I uses Python(Django) for Backend development, and React.js for Frontend
-        development<br><br>
-        When not on the keyboard, I watch football, I read historical books. I am also enthusiastic about philosophy,
-        politics,
-        religion, I love the planet Mars(Curiosity Rover is representing in the red planet <span style="color: red">&hearts;</span>).
-        cultures and entertainment. I have a pinch for learning as it gives me the opportunity to see the world in a
-        different way.
-        <a href="https://en.wikipedia.org/wiki/Gautama_Buddha">Gautama Buddha</a> is one philosopher I like, Confucious
-        is another.<br><br>
-        <blockquote class="text-center"><b> <i class="fas fa-quote-left"></i>I never see what has been done; I only see
+        I am Software Engineer, I writes <b>Python(Django)</b> and <b>React.js</b> as my day-to-day activity<br><br>
+        When not on the keyboard, I watch Mars documentaries, I read historical books. I am also enthusiastic about philosophy,
+        politics, religion, cultures and entertainment. <br> <br> I am a fan of <a href="https://en.wikipedia.org/wiki/Curiosity_(rover)">Curiosity Rover</a>
+         and I look forward to seeing <a href="https://en.wikipedia.org/wiki/Perseverance_(rover)">Perseverance Rover</a> on the red planet
+         <span style="color: red">&hearts;</span>. <br>
+        
+         I have a pinch for learning as it gives me the opportunity to see the world in a
+        different way. <br> <br>
+        <a href="https://en.wikipedia.org/wiki/Gautama_Buddha">Gautama Buddha</a> is one philosopher I like, 
+        <a href="https://en.wikipedia.org/wiki/Confucius">Confucious</a> is another.<br><br>
+        <blockquote class="text-center"><b> <i class="fas fa-quote-left"></i> I never see what has been done; I only see
             what remains to be
             done <i class="fas fa-quote-right"></i></b> <small class="text-center">
             <a target="_blank" href="https://en.wikipedia.org/wiki/Gautama_Buddha">(Buddha)</a></small><br>
@@ -310,24 +256,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
-<script>
-    $(document).scroll(function () {
-        let $nav = $(".navbar");
-        $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
-        scrollFunction()
-    });
-
-    let navigator = $('.navigator')
-
-    function scrollFunction() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            navigator.css('display', 'block')
-        } else {
-            navigator.css('display', 'none')
-        }
-    }
-
-    const scrollToTop = () => $(window).scrollTop(0);
-</script>
+<script src="scripts.js"></script>
 </body>
 </html>
