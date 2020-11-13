@@ -5,14 +5,14 @@
     --bg-color: #fff;
     --text-color: #000;
     --nav-bar-scrolled: #fff;
-    --back-image: url("https://scitechdaily.com/images/First-Humans-on-Mars-scaled.jpg");
+    --back-image: url("https://res.cloudinary.com/cypher01/image/upload/v1605306793/First-Humans-on-Mars-scaled_iinyty.webp");
 }
 
 [data-theme="dark"] {
     --bg-color: #343942;
     --text-color: #fff;
     --nav-bar-scrolled: #32363d;
-    --back-image: url("https://www.vaisala.com/sites/default/files/styles/16_9_liftup_extra_large/public/images/LIFT-Mars%20the%20Red%20Planet-1600x900.jpg?itok=YXq-Cv1K");
+    --back-image: url("https://res.cloudinary.com/cypher01/image/upload/v1605307520/LIFT-Mars_20the_20Red_20Planet-1600x900_oerwj2.webp");
 }
 
 html {
