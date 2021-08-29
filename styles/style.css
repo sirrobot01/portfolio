@@ -15,6 +15,18 @@
     --back-image: url("https://res.cloudinary.com/cypher01/image/upload/v1605307520/LIFT-Mars_20the_20Red_20Planet-1600x900_oerwj2.webp");
 }
 
+::-webkit-scrollbar {
+    width: 15px;
+    height: 40px;
+}
+::-webkit-scrollbar-track-piece  {
+    background-color: var(--bg-color);
+}
+::-webkit-scrollbar-thumb:vertical {
+    background-color: grey;
+    border-radius: 10px;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -26,6 +38,7 @@ body {
     color: var(--text-color);
 
 }
+
 
 .intro, .about-me, #contact {
     min-height: 100vh;
@@ -46,6 +59,15 @@ body {
     display: grid;
 
 }
+
+#snippet {
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    display: grid;
+
+}
+
 .intro div {
     font-size: 80px;
 }
@@ -156,4 +178,5 @@ a:hover {
 .fa-python {
     color: #ffde57;
 }
+
 
