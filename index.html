@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mukhtar Akere - Software Engineer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <!-- Terminal Header -->
+    <header class="terminal-header">
+        <div class="terminal-controls">
+            <span class="control red"></span>
+            <span class="control yellow"></span>
+            <span class="control green"></span>
+        </div>
+        <div class="terminal-title">biodun.dev</div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="terminal-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="prompt">
+                <span class="user">root@biodun</span><span class="separator">:</span><span class="path">~/portfolio</span><span class="dollar">$</span>
+            </div>
+            <div class="command-output">
+                <div class="rover-display">
+                    <div class="rover-ascii">
+                        <pre class="ascii-art">
+    <span class="rover-cameras">╭─────╮</span>
+    <span class="rover-cameras">│ ◉ ◉ │</span>
+    <span class="rover-cameras">╰─────╯</span>
+      <span class="rover-mast">║ ║</span>
+<span class="rover-body">╔═════╩═╩═════════════╗</span>
+<span class="rover-body">║   PERSEVERANCE      ║</span>
+<span class="rover-body">║      ROVER          ║</span>
+<span class="rover-body">║  ╭─╮    ╭─╮    ╭─╮  ║</span>
+<span class="rover-body">║  │█│    │█│    │█│  ║</span>
+<span class="rover-body">╚══╧═╧════╧═╧════╧═╧══╝</span>
+<span class="rover-wheels">   ● ● ● ● ● ● ●</span>
+                        </pre>
+                    </div>
+                    <div class="name-info">
+                        <h1>MUKHTAR AKERE</h1>
+                        <p class="title">Software Engineer</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <nav class="nav-terminal">
+            <div class="prompt">
+                <span class="user">root@biodun</span><span class="separator">:</span><span class="path">~/portfolio</span><span class="dollar">$</span>
+            </div>
+            <div class="nav-commands">
+                <button class="nav-btn active" data-section="projects">./projects.sh</button>
+                <button class="nav-btn" data-section="skills">./skills.sh</button>
+                <button class="nav-btn" data-section="blog">./blog.sh</button>
+                <button class="nav-btn" data-section="contact">./contact.sh</button>
+            </div>
+        </nav>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section active">
+            <div class="section-header">
+                <div class="prompt">
+                    <span class="user">root@biodun</span><span class="separator">:</span><span class="path">~/projects</span><span class="dollar">$</span>
+                    <span class="command">ls -la --projects</span>
+                </div>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Lamba</h3>
+                        <div class="project-tech">
+                            <span class="tech-tag go">Go</span>
+                            <span class="tech-tag">AWS Lambda</span>
+                            <span class="tech-tag">Open Source</span>
+                        </div>
+                    </div>
+                    <p class="project-desc">Open-source AWS Lambda alternative built with Go. Lightweight serverless runtime for edge computing.</p>
+                    <div class="project-stats">
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/sirrobot01/lamba" class="project-link" target="_blank">
+                            <span class="link-text">github.com/lamba</span>
+                            <span class="link-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Decypharr</h3>
+                        <div class="project-tech">
+                            <span class="tech-tag go">Go</span>
+                            <span class="tech-tag">qBittorrent</span>
+                            <span class="tech-tag">Torrents</span>
+                            <span class="tech-tag">Debrid</span>
+                        </div>
+                    </div>
+                    <p class="project-desc">High-performance qBittorrent server with Real-Debrid support. Handles concurrent downloads and streaming.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/sirrobot01/decypharr" class="project-link" target="_blank">
+                            <span class="link-text">github.com/sirrobot01/decypharr</span>
+                            <span class="link-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Django Request Viewer</h3>
+                        <div class="project-tech">
+                            <span class="tech-tag python">Python</span>
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">Debugging</span>
+                        </div>
+                    </div>
+                    <p class="project-desc">Request/response logger for Django applications. Essential debugging tool for API development.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/sirrobot01/django-request-viewer" class="project-link" target="_blank">
+                            <span class="link-text">github.com/sirrobot01/django-request-viewer</span>
+                            <span class="link-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Django TalkTo</h3>
+                        <div class="project-tech">
+                            <span class="tech-tag python">Python</span>
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">Debugging</span>
+                        </div>
+                    </div>
+                    <p class="project-desc">Django TalkTo allows you to consume RESTful APIs seamlessly without need to create a database table</p>
+                    <div class="project-links">
+                        <a href="https://github.com/sirrobot01/djangotalkto" class="project-link" target="_blank">
+                            <span class="link-text">github.com/sirrobot01/djangotalkto</span>
+                            <span class="link-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Django Request Viewer</h3>
+                        <div class="project-tech">
+                            <span class="tech-tag python">Python</span>
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">Debugging</span>
+                        </div>
+                    </div>
+                    <p class="project-desc">Request/response logger for Django applications. Essential debugging tool for API development.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/sirrobot01/django-request-viewer" class="project-link" target="_blank">
+                            <span class="link-text">github.com/django-request-viewer</span>
+                            <span class="link-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <div class="section-header">
+                <div class="prompt">
+                    <span class="user">root@biodun</span><span class="separator">:</span><span class="path">~/skills</span><span class="dollar">$</span>
+                    <span class="command">cat skills.json</span>
+                </div>
+            </div>
+
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3 class="category-title">"languages": [</h3>
+                    <div class="skills-grid">
+                        <span class="tech-badge">Go</span>
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">JavaScript</span>
+                    </div>
+
+                    <span class="category-close">],</span>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="category-title">"frameworks": [</h3>
+                    <div class="skills-grid">
+                        <span class="tech-badge">Django</span>
+                        <span class="tech-badge">Flask</span>
+                        <span class="tech-badge">FastAPI</span>
+                        <span class="tech-badge">Gin</span>
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">sqlc</span>
+                        <span class="tech-badge">gRPC</span>
+                        <span class="tech-badge">Gin</span>
+                        <span class="tech-badge">Echo</span>
+                    </div>
+                    <span class="category-close">],</span>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="category-title">"infrastructure": [</h3>
+                    <div class="skills-grid">
+                        <span class="tech-badge">AWS</span>
+                        <span class="tech-badge">Docker</span>
+                        <span class="tech-badge">PostgreSQL</span>
+                        <span class="tech-badge">Redis</span>
+                        <span class="tech-badge">Jenkins</span>
+                        <span class="tech-badge">Prometheus</span>
+                    </div>
+                    <span class="category-close">]</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog" class="section">
+            <div class="section-header">
+                <div class="prompt">
+                    <span class="user">root@biodun</span><span class="separator">:</span><span class="path">~/blog</span><span class="dollar">$</span>
+                    <span class="command">tail -f articles.log</span>
+                </div>
+            </div>
+
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-header">
+                        <h3>Asynchronous and Periodic Tasks with Django using Celery and Redis</h3>
+                        <div class="blog-date">
+                            <span class="date-label">Published:</span>
+                            <span class="date-value">Recent</span>
+                        </div>
+                    </div>
+                    <p class="blog-desc">Learn how to implement asynchronous task processing and scheduled jobs in Django applications using Celery as the task queue and Redis as the message broker.</p>
+                    <div class="blog-tags">
+                        <span class="blog-tag python">Django</span>
+                        <span class="blog-tag">Celery</span>
+                        <span class="blog-tag">Redis</span>
+                        <span class="blog-tag">Async</span>
+                    </div>
+                    <div class="blog-links">
+                        <a href="https://blog.biodun.dev/asynchronous-and-periodic-tasks-with-django-using-celery-and-redis" class="blog-link" target="_blank">
+                            <span class="link-text">Read Article</span>
+                            <span class="link-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-header">
+                        <h3>Django Abstract Models</h3>
+                        <div class="blog-date">
+                            <span class="date-label">Published:</span>
+                            <span class="date-value">Recent</span>
+                        </div>
+                    </div>
+                    <p class="blog-desc">Explore Django's abstract models and learn how to create reusable model patterns to reduce code duplication and improve your Django application architecture.</p>
+                    <div class="blog-tags">
+                        <span class="blog-tag python">Django</span>
+                        <span class="blog-tag">Models</span>
+                        <span class="blog-tag">ORM</span>
+                        <span class="blog-tag">Architecture</span>
+                    </div>
+                    <div class="blog-links">
+                        <a href="https://blog.biodun.dev/django-abstract-models" class="blog-link" target="_blank">
+                            <span class="link-text">Read Article</span>
+                            <span class="link-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="blog-profile-card">
+                    <div class="profile-header">
+                        <h3>More Articles</h3>
+                    </div>
+                    <p class="profile-desc">Visit my blog for more technical articles on backend development, Django, Go, and software architecture.</p>
+                    <div class="profile-links">
+                        <a href="https://blog.biodun.dev/" class="profile-link" target="_blank">
+                            <span class="link-text">blog.biodun.dev</span>
+                            <span class="link-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="section-header">
+                <div class="prompt">
+                    <span class="user">root@biodun</span><span class="separator">:</span><span class="path">~/contact</span><span class="dollar">$</span>
+                    <span class="command">whoami --verbose</span>
+                </div>
+            </div>
+
+            <div class="contact-info">
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <span class="contact-label">Email:</span>
+                        <a href="mailto:akeremukhtar10@gmail.com" class="contact-link">akeremukhtar10@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Website:</span>
+                        <a href="https://biodun.dev" class="contact-link" target="_blank">biodun.dev</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">GitHub:</span>
+                        <a href="https://github.com/sirrobot01" class="contact-link" target="_blank">github.com/sirrobot01</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">LinkedIn:</span>
+                        <a href="https://linkedin.com/in/sirrobot01" class="contact-link" target="_blank">linkedin.com/in/sirrobot01</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="scripts.js"></script>
+</body>
+</html>
