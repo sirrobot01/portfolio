@@ -277,6 +277,73 @@ body {
     background: rgba(63, 185, 80, 0.1);
 }
 
+/* Interactive Shell */
+.terminal-shell {
+    margin-bottom: 40px;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+    cursor: text;
+}
+
+.shell-output {
+    margin-left: 20px;
+}
+
+.shell-block {
+    margin-bottom: 14px;
+}
+
+.shell-row {
+    font-size: 14px;
+    color: var(--text-secondary);
+    white-space: pre-wrap;
+    word-break: break-word;
+    min-height: 1.5em;
+}
+
+.shell-row.shell-echo {
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+
+.shell-row.shell-error {
+    color: var(--accent-orange);
+}
+
+.shell-row.shell-hint {
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.shell-line {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.shell-prompt {
+    margin-bottom: 0;
+    flex-shrink: 0;
+    cursor: text;
+}
+
+.shell-input {
+    flex: 1;
+    min-width: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    caret-color: var(--accent-green);
+}
+
+.terminal-shell:focus-within .shell-prompt .dollar {
+    color: var(--accent-green);
+}
+
 /* Sections */
 .section {
     display: none;
@@ -794,6 +861,11 @@ body {
     .nav-commands {
         flex-direction: column;
         gap: 10px;
+    }
+
+    .shell-output,
+    .shell-line {
+        margin-left: 0;
     }
 
     .contact-grid {

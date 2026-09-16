@@ -2,10 +2,15 @@
 const GITHUB_USER = 'sirrobot01';
 const STAR_CACHE_KEY = 'gh-stars';
 const STAR_CACHE_TTL = 60 * 60 * 1000; // 1 hour
+const SHELL_SECTIONS = ['projects', 'skills', 'blog', 'contact'];
+const SHELL_FILES = ['about.md'];
 
 class Portfolio {
     constructor() {
         this.currentSection = 'projects';
+        this.history = [];
+        this.historyIndex = 0;
+        this.githubStats = null;
         this.init();
     }
 
@@ -14,6 +19,7 @@ class Portfolio {
         this.setupTerminalControls();
         this.setupKonamiCode();
         this.setupStarCounts();
+        this.setupShell();
     }
 
     // Refresh the server-rendered star counts from the GitHub API.
@@ -56,6 +62,12 @@ class Portfolio {
         fetch(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=100`)
             .then(response => response.ok ? response.json() : Promise.reject(response.status))
             .then(repos => {
+                const owned = repos.filter(repo => !repo.fork);
+                this.githubStats = {
+                    repos: owned.length,
+                    stars: owned.reduce((total, repo) => total + repo.stargazers_count, 0)
+                };
+
                 const stars = {};
                 repos.forEach(repo => {
                     stars[repo.name] = repo.stargazers_count;
@@ -80,20 +92,244 @@ class Portfolio {
             button.addEventListener('click', () => {
                 const targetSection = button.getAttribute('data-section');
 
-                // Update active button
-                navButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-
-                // Update active section
-                sections.forEach(section => section.classList.remove('active'));
-                document.getElementById(targetSection).classList.add('active');
-
-                this.currentSection = targetSection;
-
-                // Trigger animations for the new section
-                this.animateSection(targetSection);
+                this.showSection(targetSection);
             });
         });
+    }
+
+    showSection(id) {
+        const section = document.getElementById(id);
+        if (!section) return false;
+
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('data-section') === id);
+        });
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        section.classList.add('active');
+
+        this.currentSection = id;
+
+        const path = document.getElementById('shell-path');
+        if (path) path.textContent = `~/${id}`;
+
+        this.animateSection(id);
+        return true;
+    }
+
+    setupShell() {
+        const form = document.getElementById('shell-form');
+        const input = document.getElementById('shell-input');
+        const output = document.getElementById('shell-output');
+        if (!form || !input || !output) return;
+
+        this.shellInput = input;
+        this.shellOutput = output;
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const raw = input.value;
+            input.value = '';
+            if (raw.trim()) {
+                this.history.push(raw.trim());
+            }
+            this.historyIndex = this.history.length;
+            this.runCommand(raw);
+        });
+
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (this.historyIndex > 0) {
+                    this.historyIndex--;
+                    input.value = this.history[this.historyIndex];
+                }
+            } else if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                if (this.historyIndex < this.history.length - 1) {
+                    this.historyIndex++;
+                    input.value = this.history[this.historyIndex];
+                } else {
+                    this.historyIndex = this.history.length;
+                    input.value = '';
+                }
+            } else if (e.key === 'Tab') {
+                e.preventDefault();
+                this.completeInput(input);
+            } else if (e.key === 'l' && e.ctrlKey) {
+                e.preventDefault();
+                output.replaceChildren();
+            }
+        });
+
+        // Clicking anywhere in the shell area puts the caret back in the input.
+        document.getElementById('shell').addEventListener('click', (e) => {
+            if (!e.target.closest('a')) input.focus();
+        });
+
+        // Focusing on load would pop the keyboard open on phones.
+        if (!window.matchMedia('(max-width: 768px)').matches) {
+            input.focus();
+        }
+
+        const path = document.getElementById('shell-path');
+        if (path) path.textContent = `~/${this.currentSection}`;
+
+        this.printLines(["Type 'help' for a list of commands."], 'shell-hint');
+    }
+
+    completeInput(input) {
+        const value = input.value;
+        const parts = value.split(/\s+/);
+        const repos = Array.from(document.querySelectorAll('.stat[data-repo]'))
+            .map(node => node.dataset.repo);
+
+        let pool = Object.keys(this.shellCommands());
+        if (parts.length > 1) {
+            if (parts[0] === 'cd') pool = SHELL_SECTIONS;
+            else if (parts[0] === 'cat') pool = SHELL_FILES;
+            else if (parts[0] === 'open') pool = repos;
+            else return;
+        }
+
+        const fragment = parts[parts.length - 1];
+        const matches = pool.filter(name => name.startsWith(fragment));
+        if (!matches.length) return;
+
+        if (matches.length === 1) {
+            parts[parts.length - 1] = matches[0];
+            input.value = parts.join(' ') + ' ';
+            return;
+        }
+        this.echo(value);
+        this.printLines([matches.join('   ')]);
+    }
+
+    shellCommands() {
+        return {
+            help: () => [
+                'Available commands:',
+                '',
+                '  help              show this message',
+                '  ls                list what is here',
+                '  cd <section>      go to projects, skills, blog or contact',
+                '  cat about.md      read the long version',
+                '  whoami            the short version',
+                '  open <project>    open a project on GitHub',
+                '  clear             clear the output',
+                '',
+                'Tab completes. The up arrow walks back through history.'
+            ],
+
+            ls: () => ['projects/   skills/   blog/   contact/   about.md'],
+
+            whoami: () => [
+                'Mukhtar Akere - Software Engineer',
+                'Backend systems and developer tools, mostly Go and Python.'
+            ],
+
+            cd: (args) => {
+                const target = (args[0] || '').replace(/\/$/, '');
+                if (!target) return ['cd: missing section. Try: cd projects'];
+                if (!SHELL_SECTIONS.includes(target)) {
+                    return { error: [`cd: no such section: ${target}`] };
+                }
+                this.showSection(target);
+                return [];
+            },
+
+            cat: (args) => {
+                const file = args[0];
+                if (!file) return ['cat: missing file. Try: cat about.md'];
+                if (file !== 'about.md') {
+                    return { error: [`cat: ${file}: No such file or directory`] };
+                }
+                const stats = this.githubStats;
+                const scale = stats
+                    ? `${stats.repos} public repositories and ${stats.stars.toLocaleString()} stars`
+                    : 'a few dozen public repositories';
+                return [
+                    'Mukhtar Akere - Software Engineer',
+                    '',
+                    'I build backend systems and developer tools, mostly in Go and',
+                    'Python. Most of that work is open source: ' + scale + '.',
+                    '',
+                    'The largest is Decypharr, a media gateway for Debrid and Usenet',
+                    'that gives Sonarr, Radarr and other *Arr applications one',
+                    'interface to talk to. More recently I have been building',
+                    'infrastructure in Go - a protobuf schema registry, a shared hint',
+                    'layer for independent operators, and a self-hosted alternative to',
+                    'AWS Lambda.',
+                    '',
+                    'I write about backend engineering at blog.biodun.dev.',
+                    '',
+                    'Reach me at akeremukhtar10@gmail.com.'
+                ];
+            },
+
+            open: (args) => {
+                const name = args[0];
+                const repos = Array.from(document.querySelectorAll('.stat[data-repo]'))
+                    .map(node => node.dataset.repo);
+                if (!name) return [`open: missing project. Try: open ${repos[0] || 'decypharr'}`];
+                if (!repos.includes(name)) {
+                    return { error: [`open: unknown project: ${name}`, `Known: ${repos.join(', ')}`] };
+                }
+                window.open(`https://github.com/${GITHUB_USER}/${name}`, '_blank', 'noopener');
+                return [`Opening github.com/${GITHUB_USER}/${name} ...`];
+            },
+
+            clear: () => {
+                this.shellOutput.replaceChildren();
+                return null;
+            }
+        };
+    }
+
+    runCommand(raw) {
+        const trimmed = raw.trim();
+        this.echo(raw);
+        if (!trimmed) return;
+
+        const parts = trimmed.split(/\s+/);
+        const handler = this.shellCommands()[parts[0]];
+        if (!handler) {
+            this.printLines([
+                `${parts[0]}: command not found`,
+                "Type 'help' for a list of commands."
+            ], 'shell-error');
+            return;
+        }
+
+        const result = handler(parts.slice(1));
+        if (result === null) return;
+        if (Array.isArray(result)) this.printLines(result);
+        else if (result && result.error) this.printLines(result.error, 'shell-error');
+
+        this.shellInput.scrollIntoView({ block: 'nearest' });
+    }
+
+    // Echo the command back above its output, the way a real shell does.
+    echo(command) {
+        const row = document.createElement('div');
+        row.className = 'shell-row shell-echo';
+        row.innerHTML = '<span class="user">root@biodun</span><span class="separator">:</span>'
+            + '<span class="path">~/' + (this.currentSection || '') + '</span>'
+            + '<span class="dollar">$</span> ';
+        // The command is user input, so it goes in as text, never as markup.
+        row.appendChild(document.createTextNode(command));
+        this.shellOutput.appendChild(row);
+    }
+
+    printLines(lines, className) {
+        const block = document.createElement('div');
+        block.className = 'shell-block';
+        lines.forEach(line => {
+            const row = document.createElement('div');
+            row.className = className ? `shell-row ${className}` : 'shell-row';
+            row.textContent = line;
+            block.appendChild(row);
+        });
+        this.shellOutput.appendChild(block);
     }
 
     setupTerminalControls() {
@@ -309,6 +545,7 @@ class Portfolio {
         let konamiIndex = 0;
 
         document.addEventListener('keydown', (e) => {
+            if (e.target === this.shellInput) return;
             if (e.keyCode === konamiCode[konamiIndex]) {
                 konamiIndex++;
                 if (konamiIndex === konamiCode.length) {

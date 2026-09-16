@@ -109,6 +109,19 @@
             </div>
         </nav>
 
+        <!-- Interactive Shell -->
+        <section class="terminal-shell" id="shell">
+            <div class="shell-output" id="shell-output" role="log" aria-live="polite"></div>
+            <form class="shell-line" id="shell-form" autocomplete="off">
+                <label class="prompt shell-prompt" for="shell-input">
+                    <span class="user">root@biodun</span><span class="separator">:</span><span class="path" id="shell-path">~/portfolio</span><span class="dollar">$</span>
+                </label>
+                <input class="shell-input" id="shell-input" type="text" name="command"
+                       autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false"
+                       aria-label="Terminal command input. Type help for a list of commands.">
+            </form>
+        </section>
+
         <!-- Projects Section -->
         <section id="projects" class="section active">
             <div class="section-header">
