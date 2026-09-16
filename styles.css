@@ -315,6 +315,18 @@ body {
     font-style: italic;
 }
 
+.shell-palette {
+    display: flex;
+    gap: 4px;
+    margin-top: 4px;
+}
+
+.shell-swatch {
+    width: 26px;
+    height: 12px;
+    border-radius: 2px;
+}
+
 .shell-line {
     display: flex;
     align-items: center;

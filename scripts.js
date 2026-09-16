@@ -64,9 +64,23 @@ class Portfolio {
             .then(response => response.ok ? response.json() : Promise.reject(response.status))
             .then(repos => {
                 const owned = repos.filter(repo => !repo.fork);
+                // Weighted by stars, not repo count: a pile of small old repos
+                // should not outrank where the work that landed actually is.
+                const byLanguage = {};
+                owned.forEach(repo => {
+                    if (!repo.language) return;
+                    byLanguage[repo.language] = (byLanguage[repo.language] || 0) + repo.stargazers_count + 1;
+                });
+                const top = owned.reduce((best, repo) =>
+                    repo.stargazers_count > (best ? best.stargazers_count : -1) ? repo : best, null);
+
                 this.githubStats = {
                     repos: owned.length,
-                    stars: owned.reduce((total, repo) => total + repo.stargazers_count, 0)
+                    stars: owned.reduce((total, repo) => total + repo.stargazers_count, 0),
+                    topRepo: top ? { name: top.name, stars: top.stargazers_count } : null,
+                    languages: Object.keys(byLanguage)
+                        .sort((a, b) => byLanguage[b] - byLanguage[a])
+                        .slice(0, 3)
                 };
 
                 const stars = {};
@@ -245,6 +259,7 @@ class Portfolio {
                 '  cd ~              close the current section',
                 '  cat about.md      read the long version',
                 '  whoami            the short version',
+                '  neofetch          the stats',
                 '  open <project>    open a project on GitHub',
                 '  clear             clear the output',
                 '',
@@ -312,6 +327,53 @@ class Portfolio {
                 return [`Opening github.com/${GITHUB_USER}/${name} ...`];
             },
 
+            neofetch: () => {
+                const stats = this.githubStats;
+                const art = [
+                    '    \u256d\u2500\u2500\u2500\u2500\u2500\u256e',
+                    '    \u2502 \u25c9 \u25c9 \u2502',
+                    '    \u2570\u2500\u2500\u2500\u2500\u2500\u256f',
+                    '      \u2551 \u2551',
+                    '\u2554\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2569\u2550\u2550\u2550\u2550\u2557',
+                    '\u2551PERSEVERANCE\u2551',
+                    '\u2551    ROVER   \u2551',
+                    '\u255a\u2550\u2567\u2550\u2567\u2550\u2550\u2550\u2550\u2567\u2550\u2567\u2550\u255d',
+                    '  \u25cf \u25cf \u25cf \u25cf \u25cf'
+                ];
+
+                const languages = stats && stats.languages.length
+                    ? stats.languages.join(', ')
+                    : 'Go, Python, TypeScript';
+                const info = [
+                    'mukhtar@biodun',
+                    '--------------',
+                    `Role:      Software Engineer`,
+                    `Focus:     Backend, distributed systems`,
+                    `Languages: ${languages}`,
+                    `Repos:     ${stats ? stats.repos + ' public' : 'loading...'}`,
+                    `Stars:     ${stats ? stats.stars.toLocaleString() : 'loading...'}`,
+                    `Top repo:  ${stats && stats.topRepo ? `${stats.topRepo.name} (${stats.topRepo.stars.toLocaleString()})` : 'decypharr'}`,
+                    `Blog:      blog.biodun.dev`,
+                    `GitHub:    github.com/${GITHUB_USER}`
+                ];
+
+                // Side by side is unreadable once the lines have to wrap.
+                if (window.matchMedia('(max-width: 768px)').matches) {
+                    this.printLines([...art, '', ...info]);
+                    this.printPalette();
+                    return null;
+                }
+
+                const gutter = Math.max(...art.map(line => line.length)) + 4;
+                const lines = [];
+                for (let i = 0; i < Math.max(art.length, info.length); i++) {
+                    lines.push(((art[i] || '').padEnd(gutter) + (info[i] || '')).trimEnd());
+                }
+                this.printLines(lines);
+                this.printPalette();
+                return null;
+            },
+
             clear: () => {
                 this.shellOutput.replaceChildren();
                 return null;
@@ -352,6 +414,22 @@ class Portfolio {
         // The command is user input, so it goes in as text, never as markup.
         row.appendChild(document.createTextNode(command));
         this.shellOutput.appendChild(row);
+    }
+
+    printPalette() {
+        const colors = ['#ff5f56', '#ffbd2e', '#27ca3f', '#58a6ff', '#a5a4ff', '#8b949e'];
+        const block = document.createElement('div');
+        block.className = 'shell-block';
+        const row = document.createElement('div');
+        row.className = 'shell-row shell-palette';
+        colors.forEach(color => {
+            const swatch = document.createElement('span');
+            swatch.className = 'shell-swatch';
+            swatch.style.background = color;
+            row.appendChild(swatch);
+        });
+        block.appendChild(row);
+        this.shellOutput.appendChild(block);
     }
 
     printLines(lines, className) {
