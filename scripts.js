@@ -2,6 +2,78 @@
 const GITHUB_USER = 'sirrobot01';
 const STAR_CACHE_KEY = 'gh-stars';
 const STAR_CACHE_TTL = 60 * 60 * 1000; // 1 hour
+const MAN_PAGES = {
+    decypharr: {
+        summary: 'media gateway for Debrid and Usenet',
+        synopsis: 'docker compose up -d        # image: cy01/blackhole:latest',
+        description: [
+            'Gives Sonarr, Radarr and other *Arr applications a single',
+            'interface to Debrid providers and Usenet streaming, so they can',
+            'talk to a debrid service the way they talk to a torrent client.'
+        ],
+        language: 'Go',
+        license: 'MIT'
+    },
+    'django-request-viewer': {
+        summary: 'log and view requests made on a Django app',
+        synopsis: 'pip install django-request-viewer',
+        description: [
+            'Logs requests and exceptions raised by a Django application and',
+            'renders them for inspection. Written after horus, a request',
+            'logger for Go, to give the Django community the same tool.'
+        ],
+        language: 'Python',
+        license: 'MIT'
+    },
+    lamba: {
+        summary: 'a self-hosted AWS Lambda',
+        synopsis: 'go install github.com/sirrobot01/lamba@latest',
+        description: [
+            'A self-hosted alternative to AWS Lambda, written in Go. Runs',
+            'functions in containers on infrastructure you control, instead',
+            'of in a managed cloud runtime.'
+        ],
+        language: 'Go',
+        license: 'MIT'
+    },
+    protodex: {
+        summary: 'self-hosted protobuf schema registry',
+        synopsis: 'go install github.com/sirrobot01/protodex/cmd/protodex@latest',
+        description: [
+            'Stores and versions protobuf schemas, and generates client code',
+            'from them, without depending on a hosted registry.'
+        ],
+        language: 'Go',
+        license: 'MIT'
+    },
+    dbnest: {
+        summary: 'self-hosted database manager',
+        synopsis: 'docker run -d cy01/dbnest:latest',
+        description: [
+            'Provisions PostgreSQL, MySQL, MariaDB and Redis instances in',
+            'containers and manages them from one web interface, with',
+            'real-time metrics and scheduled backups.'
+        ],
+        language: 'TypeScript',
+        license: 'MIT'
+    },
+    hearsay: {
+        summary: 'shared observations between independent operators',
+        synopsis: 'curl -fsSL https://hearsay.decypharr.com/install.sh | sh',
+        description: [
+            'Shares observations about external state between independent',
+            'operators. The observations are byproducts of work the operators',
+            'already do.',
+            '',
+            'Hearsay is a hint layer, not an authority. An answer tells you',
+            'what other operators believe, how strongly, and how recently. It',
+            'does not tell you what is true.'
+        ],
+        language: 'Go',
+        license: '-'
+    }
+};
+
 const SHELL_SECTIONS = ['projects', 'skills', 'blog', 'contact'];
 const SHELL_FILES = ['about.md'];
 
@@ -243,6 +315,7 @@ class Portfolio {
             if (parts[0] === 'cd') pool = SHELL_SECTIONS;
             else if (parts[0] === 'cat') pool = SHELL_FILES;
             else if (parts[0] === 'open') pool = repos;
+            else if (parts[0] === 'man') pool = Object.keys(MAN_PAGES);
             else return;
         }
 
@@ -271,6 +344,7 @@ class Portfolio {
                 '  cat about.md      read the long version',
                 '  whoami            the short version',
                 '  neofetch          the stats',
+                '  man <project>     read the manual for a project',
                 '  open <project>    open a project on GitHub',
                 '  clear             clear the output',
                 '',
@@ -336,6 +410,44 @@ class Portfolio {
                 }
                 window.open(`https://github.com/${GITHUB_USER}/${name}`, '_blank', 'noopener');
                 return [`Opening github.com/${GITHUB_USER}/${name} ...`];
+            },
+
+            man: (args) => {
+                const name = args[0];
+                const known = Object.keys(MAN_PAGES);
+                if (!name) {
+                    return ['What manual page do you want?', `Available: ${known.join(', ')}`];
+                }
+                const page = MAN_PAGES[name];
+                if (!page) {
+                    return { error: [`No manual entry for ${name}`, `Available: ${known.join(', ')}`] };
+                }
+
+                const count = document.querySelector(`.stat[data-repo="${name}"] .stat-count`);
+                const stars = count ? count.textContent : '-';
+                const indent = '       ';
+                const tag = `${name.toUpperCase()}(1)`;
+                const lines = [];
+
+                // The centred header only fits on a wide screen.
+                if (window.matchMedia('(max-width: 768px)').matches) {
+                    lines.push(tag);
+                } else {
+                    const mid = 'User Commands';
+                    const gap = 72 - (tag.length * 2) - mid.length;
+                    const left = Math.max(1, Math.floor(gap / 2));
+                    lines.push(tag + ' '.repeat(left) + mid + ' '.repeat(Math.max(1, gap - left)) + tag);
+                }
+
+                lines.push('', 'NAME', `${indent}${name} - ${page.summary}`);
+                lines.push('', 'SYNOPSIS', `${indent}${page.synopsis}`);
+                lines.push('', 'DESCRIPTION');
+                page.description.forEach(line => lines.push(line ? indent + line : ''));
+                lines.push('', 'STATUS');
+                lines.push(`${indent}Stars: ${stars}    Language: ${page.language}    License: ${page.license}`);
+                lines.push('', 'SEE ALSO');
+                lines.push(`${indent}github.com/${GITHUB_USER}/${name}`);
+                return lines;
             },
 
             neofetch: () => {
