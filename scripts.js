@@ -7,7 +7,7 @@ const SHELL_FILES = ['about.md'];
 
 class Portfolio {
     constructor() {
-        this.currentSection = 'projects';
+        this.currentSection = '';
         this.history = [];
         this.historyIndex = 0;
         this.githubStats = null;
@@ -20,6 +20,7 @@ class Portfolio {
         this.setupKonamiCode();
         this.setupStarCounts();
         this.setupShell();
+        this.setupRouting();
     }
 
     // Refresh the server-rendered star counts from the GitHub API.
@@ -97,23 +98,46 @@ class Portfolio {
         });
     }
 
-    showSection(id) {
-        const section = document.getElementById(id);
-        if (!section) return false;
+    promptPath() {
+        return this.currentSection ? `~/${this.currentSection}` : '~';
+    }
+
+    // id of null closes everything and returns to the bare prompt.
+    showSection(id, updateHash = true) {
+        const section = id ? document.getElementById(id) : null;
+        if (id && !section) return false;
 
         document.querySelectorAll('.nav-btn').forEach(btn => {
             btn.classList.toggle('active', btn.getAttribute('data-section') === id);
         });
         document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-        section.classList.add('active');
+        if (section) section.classList.add('active');
 
-        this.currentSection = id;
+        this.currentSection = id || '';
 
         const path = document.getElementById('shell-path');
-        if (path) path.textContent = `~/${id}`;
+        if (path) path.textContent = this.promptPath();
 
-        this.animateSection(id);
+        if (updateHash) {
+            if (id) {
+                if (location.hash !== `#${id}`) location.hash = `#${id}`;
+            } else if (location.hash) {
+                history.replaceState(null, '', location.pathname + location.search);
+            }
+        }
+
+        if (section) this.animateSection(id);
         return true;
+    }
+
+    // Sections are addressable, so a link to one can be shared.
+    setupRouting() {
+        const apply = () => {
+            const id = decodeURIComponent(location.hash.replace(/^#/, ''));
+            this.showSection(SHELL_SECTIONS.includes(id) ? id : null, false);
+        };
+        window.addEventListener('hashchange', apply);
+        apply();
     }
 
     setupShell() {
@@ -174,7 +198,13 @@ class Portfolio {
         const path = document.getElementById('shell-path');
         if (path) path.textContent = `~/${this.currentSection}`;
 
-        this.printLines(["Type 'help' for a list of commands."], 'shell-hint');
+        this.printLines([
+            'biodun.dev - Mukhtar Akere',
+            'Software engineer. Backend systems and developer tools, mostly Go and Python.'
+        ]);
+        this.printLines([
+            "Type 'help' to see what you can do here, or 'cat about.md' for the long version."
+        ], 'shell-hint');
     }
 
     completeInput(input) {
@@ -212,6 +242,7 @@ class Portfolio {
                 '  help              show this message',
                 '  ls                list what is here',
                 '  cd <section>      go to projects, skills, blog or contact',
+                '  cd ~              close the current section',
                 '  cat about.md      read the long version',
                 '  whoami            the short version',
                 '  open <project>    open a project on GitHub',
@@ -228,8 +259,11 @@ class Portfolio {
             ],
 
             cd: (args) => {
-                const target = (args[0] || '').replace(/\/$/, '');
-                if (!target) return ['cd: missing section. Try: cd projects'];
+                const target = (args[0] || '~').replace(/\/$/, '');
+                if (target === '~' || target === '/' || target === '..') {
+                    this.showSection(null);
+                    return [];
+                }
                 if (!SHELL_SECTIONS.includes(target)) {
                     return { error: [`cd: no such section: ${target}`] };
                 }
@@ -313,8 +347,8 @@ class Portfolio {
         const row = document.createElement('div');
         row.className = 'shell-row shell-echo';
         row.innerHTML = '<span class="user">root@biodun</span><span class="separator">:</span>'
-            + '<span class="path">~/' + (this.currentSection || '') + '</span>'
-            + '<span class="dollar">$</span> ';
+            + '<span class="path"></span><span class="dollar">$</span> ';
+        row.querySelector('.path').textContent = this.promptPath();
         // The command is user input, so it goes in as text, never as markup.
         row.appendChild(document.createTextNode(command));
         this.shellOutput.appendChild(row);
