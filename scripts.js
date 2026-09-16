@@ -11,6 +11,7 @@ class Portfolio {
         this.history = [];
         this.historyIndex = 0;
         this.githubStats = null;
+        this.githubState = 'pending';
         this.init();
     }
 
@@ -52,7 +53,11 @@ class Portfolio {
 
         try {
             const cached = JSON.parse(localStorage.getItem(STAR_CACHE_KEY));
-            if (cached && Date.now() - cached.at < STAR_CACHE_TTL) {
+            // A cache written before stats were recorded is treated as a miss,
+            // otherwise neofetch would read "loading..." until the entry expired.
+            if (cached && cached.stats && Date.now() - cached.at < STAR_CACHE_TTL) {
+                this.githubStats = cached.stats;
+                this.githubState = 'ready';
                 render(cached.stars);
                 return;
             }
@@ -74,6 +79,7 @@ class Portfolio {
                 const top = owned.reduce((best, repo) =>
                     repo.stargazers_count > (best ? best.stargazers_count : -1) ? repo : best, null);
 
+                this.githubState = 'ready';
                 this.githubStats = {
                     repos: owned.length,
                     stars: owned.reduce((total, repo) => total + repo.stargazers_count, 0),
@@ -89,13 +95,18 @@ class Portfolio {
                 });
                 render(stars);
                 try {
-                    localStorage.setItem(STAR_CACHE_KEY, JSON.stringify({ at: Date.now(), stars }));
+                    localStorage.setItem(STAR_CACHE_KEY, JSON.stringify({
+                        at: Date.now(),
+                        stars,
+                        stats: this.githubStats
+                    }));
                 } catch (e) {
                     // Storage full or blocked - the counts still rendered.
                 }
             })
             .catch(() => {
                 // Offline or rate limited - keep the counts already in the markup.
+                this.githubState = 'failed';
             });
     }
 
@@ -341,6 +352,7 @@ class Portfolio {
                     '  \u25cf \u25cf \u25cf \u25cf \u25cf'
                 ];
 
+                const pending = this.githubState === 'failed' ? 'unavailable' : 'loading...';
                 const languages = stats && stats.languages.length
                     ? stats.languages.join(', ')
                     : 'Go, Python, TypeScript';
@@ -350,8 +362,8 @@ class Portfolio {
                     `Role:      Software Engineer`,
                     `Focus:     Backend, distributed systems`,
                     `Languages: ${languages}`,
-                    `Repos:     ${stats ? stats.repos + ' public' : 'loading...'}`,
-                    `Stars:     ${stats ? stats.stars.toLocaleString() : 'loading...'}`,
+                    `Repos:     ${stats ? stats.repos + ' public' : pending}`,
+                    `Stars:     ${stats ? stats.stars.toLocaleString() : pending}`,
                     `Top repo:  ${stats && stats.topRepo ? `${stats.topRepo.name} (${stats.topRepo.stars.toLocaleString()})` : 'decypharr'}`,
                     `Blog:      blog.biodun.dev`,
                     `GitHub:    github.com/${GITHUB_USER}`
