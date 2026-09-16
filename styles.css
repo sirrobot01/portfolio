@@ -17,6 +17,7 @@
     --border: #30363d;
     --go-color: #00add8;
     --python-color: #3776ab;
+    --ts-color: #3178c6;
     --font-mono: 'JetBrains Mono', monospace;
     --font-sans: 'Inter', sans-serif;
 }
@@ -368,11 +369,33 @@ body {
     color: var(--python-color);
 }
 
+.tech-tag.ts {
+    background: rgba(49, 120, 198, 0.2);
+    color: var(--ts-color);
+}
+
 .project-desc {
     color: var(--text-secondary);
     margin-bottom: 20px;
     line-height: 1.6;
     font-family: var(--font-sans);
+}
+
+.project-stats {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.stat {
+    font-size: 13px;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.stat-star {
+    color: #e3b341;
 }
 
 .project-links {
