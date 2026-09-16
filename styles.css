@@ -370,28 +370,10 @@ body {
     border-radius: 12px;
     padding: 25px;
     transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.project-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent-blue), var(--accent-green), var(--accent-orange));
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.project-card:hover::before {
-    opacity: 1;
 }
 
 .project-card:hover {
-    border-color: var(--accent-blue);
+    border-color: var(--text-secondary);
     transform: translateY(-5px);
 }
 
@@ -565,28 +547,10 @@ body {
     border-radius: 12px;
     padding: 25px;
     transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.blog-card::before, .blog-profile-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent-blue), var(--accent-green), var(--accent-orange));
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.blog-card:hover::before, .blog-profile-card:hover::before {
-    opacity: 1;
 }
 
 .blog-card:hover, .blog-profile-card:hover {
-    border-color: var(--accent-blue);
+    border-color: var(--text-secondary);
     transform: translateY(-5px);
 }
 
