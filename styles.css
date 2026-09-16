@@ -398,6 +398,10 @@ body {
     color: #e3b341;
 }
 
+.stat-count {
+    font-variant-numeric: tabular-nums;
+}
+
 .project-links {
     display: flex;
     justify-content: space-between;

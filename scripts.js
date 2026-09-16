@@ -1,4 +1,8 @@
 // script.js
+const GITHUB_USER = 'sirrobot01';
+const STAR_CACHE_KEY = 'gh-stars';
+const STAR_CACHE_TTL = 60 * 60 * 1000; // 1 hour
+
 class Portfolio {
     constructor() {
         this.currentSection = 'projects';
@@ -9,6 +13,50 @@ class Portfolio {
         this.setupNavigation();
         this.setupTerminalControls();
         this.setupKonamiCode();
+        this.setupStarCounts();
+    }
+
+    // Refresh the server-rendered star counts from the GitHub API.
+    // One list request covers every repo; the markup stays as the fallback.
+    setupStarCounts() {
+        const nodes = document.querySelectorAll('.stat[data-repo]');
+        if (!nodes.length) return;
+
+        const render = (stars) => {
+            nodes.forEach(node => {
+                const count = stars[node.dataset.repo];
+                if (typeof count !== 'number') return;
+                node.querySelector('.stat-count').textContent = count.toLocaleString();
+            });
+        };
+
+        try {
+            const cached = JSON.parse(localStorage.getItem(STAR_CACHE_KEY));
+            if (cached && Date.now() - cached.at < STAR_CACHE_TTL) {
+                render(cached.stars);
+                return;
+            }
+        } catch (e) {
+            // Unreadable or unavailable storage - fall through and fetch.
+        }
+
+        fetch(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=100`)
+            .then(response => response.ok ? response.json() : Promise.reject(response.status))
+            .then(repos => {
+                const stars = {};
+                repos.forEach(repo => {
+                    stars[repo.name] = repo.stargazers_count;
+                });
+                render(stars);
+                try {
+                    localStorage.setItem(STAR_CACHE_KEY, JSON.stringify({ at: Date.now(), stars }));
+                } catch (e) {
+                    // Storage full or blocked - the counts still rendered.
+                }
+            })
+            .catch(() => {
+                // Offline or rate limited - keep the counts already in the markup.
+            });
     }
 
     setupNavigation() {
