@@ -244,6 +244,7 @@ class Portfolio {
         if (!form || !input || !output) return;
 
         this.shellInput = input;
+        this.shellLine = form;
         this.shellOutput = output;
 
         form.addEventListener('submit', (e) => {
@@ -521,11 +522,16 @@ class Portfolio {
         }
 
         const result = handler(parts.slice(1));
-        if (result === null) return;
-        if (Array.isArray(result)) this.printLines(result);
+        if (Array.isArray(result) && result.length) this.printLines(result);
         else if (result && result.error) this.printLines(result.error, 'shell-error');
 
-        this.shellInput.scrollIntoView({ block: 'nearest' });
+        this.scrollShell();
+    }
+
+    // Keep the newest output and the prompt both on screen.
+    scrollShell() {
+        this.shellOutput.scrollTop = this.shellOutput.scrollHeight;
+        (this.shellLine || this.shellInput).scrollIntoView({ block: 'nearest' });
     }
 
     // Echo the command back above its output, the way a real shell does.

@@ -123,12 +123,12 @@ body {
 
 /* Hero Section */
 .hero {
-    margin-bottom: 50px;
+    margin-bottom: 24px;
 }
 
 .command-output {
     margin-left: 20px;
-    padding: 20px 0;
+    padding: 8px 0;
 }
 
 /* Rover Display */
@@ -136,7 +136,7 @@ body {
     display: flex;
     align-items: center;
     gap: 60px;
-    margin-top: 30px;
+    margin-top: 12px;
 }
 
 .rover-ascii {
@@ -241,7 +241,7 @@ body {
 
 /* Navigation */
 .nav-terminal {
-    margin-bottom: 40px;
+    margin-bottom: 24px;
     border-top: 1px solid var(--border);
     padding-top: 20px;
 }
@@ -287,6 +287,29 @@ body {
 
 .shell-output {
     margin-left: 20px;
+    max-height: 45vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-right: 8px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+}
+
+.shell-output::-webkit-scrollbar {
+    width: 8px;
+}
+
+.shell-output::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.shell-output::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+}
+
+.shell-output::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
 }
 
 .shell-block {
@@ -331,6 +354,8 @@ body {
     display: flex;
     align-items: center;
     margin-left: 20px;
+    /* Keeps scrollIntoView from parking the prompt flush against the edge. */
+    scroll-margin-bottom: 40px;
 }
 
 .shell-prompt {
