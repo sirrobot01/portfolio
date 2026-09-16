@@ -22,12 +22,25 @@ class Portfolio {
         const nodes = document.querySelectorAll('.stat[data-repo]');
         if (!nodes.length) return;
 
+        const grid = document.querySelector('.projects-grid');
+
         const render = (stars) => {
             nodes.forEach(node => {
                 const count = stars[node.dataset.repo];
                 if (typeof count !== 'number') return;
                 node.querySelector('.stat-count').textContent = count.toLocaleString();
             });
+
+            // Reorder to match the counts now on screen, so the two never disagree.
+            // Cards already in star order re-append unchanged, so nothing visibly moves.
+            const cards = Array.from(grid.querySelectorAll('.project-card'));
+            cards.sort((a, b) => starsOf(b) - starsOf(a));
+            cards.forEach(card => grid.appendChild(card));
+        };
+
+        const starsOf = (card) => {
+            const count = card.querySelector('.stat-count');
+            return count ? Number(count.textContent.replace(/,/g, '')) : -1;
         };
 
         try {
