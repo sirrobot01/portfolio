@@ -1,311 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mukhtar Akere</title>
-<meta name="description" content="Software engineer with 8 years of experience building backend and high-performance systems in Go and Python.">
-<meta name="author" content="Mukhtar Akere">
-<meta name="theme-color" content="#fbf9f3">
-<link rel="canonical" href="https://biodun.dev/">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mukhtar Akere</title>
+    <meta name="description" content="Software engineer with 8 years of experience building backend and high-performance systems in Go and Python.">
+    <meta name="author" content="Mukhtar Akere">
+    <meta name="theme-color" content="#fbf9f3">
+    <link rel="canonical" href="https://biodun.dev/">
 
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://biodun.dev/">
-<meta property="og:site_name" content="biodun.dev">
-<meta property="og:title" content="Mukhtar Akere - Software Engineer">
-<meta property="og:description" content="Software engineer with 8 years of experience building backend and high-performance systems in Go and Python.">
-<meta property="og:image" content="https://biodun.dev/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Mukhtar Akere, Software Engineer">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Mukhtar Akere - Software Engineer">
-<meta name="twitter:description" content="Software engineer with 8 years of experience building backend and high-performance systems in Go and Python.">
-<meta name="twitter:image" content="https://biodun.dev/og-image.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://biodun.dev/">
+    <meta property="og:site_name" content="biodun.dev">
+    <meta property="og:title" content="Mukhtar Akere - Software Engineer">
+    <meta property="og:description" content="Software engineer with 8 years of experience building backend and high-performance systems in Go and Python.">
+    <meta property="og:image" content="https://biodun.dev/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Mukhtar Akere, Software Engineer">
 
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mukhtar Akere - Software Engineer">
+    <meta name="twitter:description" content="Software engineer with 8 years of experience building backend and high-performance systems in Go and Python.">
+    <meta name="twitter:image" content="https://biodun.dev/og-image.png">
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Mukhtar Akere",
-  "url": "https://biodun.dev/",
-  "jobTitle": "Software Engineer",
-  "email": "mailto:akeremukhtar10@gmail.com",
-  "knowsAbout": ["Go", "Python", "Distributed Systems", "Backend Engineering"],
-  "sameAs": [
-    "https://github.com/sirrobot01",
-    "https://linkedin.com/in/sirrobot01",
-    "https://blog.biodun.dev/"
-  ]
-}
-</script>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
 
-<style>
-:root { interpolate-size: allow-keywords; }
-html { background: #fbf9f3; scroll-behavior: smooth; }
-body {
-  max-width: 42em;
-  margin: 0 auto;
-  padding: 3em 1em 4em;
-  color: #222;
-  font: 17px/1.6 Georgia, "Times New Roman", serif;
-  font-variant-numeric: oldstyle-nums;
-  text-rendering: optimizeLegibility;
-  animation: fade 0.5s ease-out;
-}
-@keyframes fade { from { opacity: 0; transform: translateY(4px); } }
-::selection { background: #eedccb; }
-/* Curiosity's wheels print "JPL" in Morse code into the soil. */
-:root { --tracks: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='2'%3E%3Cpath fill='%23cdb9a3' d='M0 0h2v2H0zM4 0h6v2H4zM12 0h6v2h-6zM20 0h6v2h-6zM32 0h2v2h-2zM36 0h6v2h-6zM44 0h6v2h-6zM52 0h2v2h-2zM60 0h2v2h-2zM64 0h6v2h-6zM72 0h2v2h-2zM76 0h2v2h-2z'/%3E%3C/svg%3E") repeat-x left bottom / 88px 2px; }
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Mukhtar Akere",
+        "url": "https://biodun.dev/",
+        "jobTitle": "Software Engineer",
+        "email": "mailto:akeremukhtar10@gmail.com",
+        "knowsAbout": ["Go", "Python", "Distributed Systems", "Backend Engineering"],
+        "sameAs": [
+          "https://github.com/sirrobot01",
+          "https://linkedin.com/in/sirrobot01",
+          "https://blog.biodun.dev/"
+        ]
+      }
+    </script>
+  </head>
 
-h1 { font-size: 1.9em; font-weight: normal; margin: 0 0 0.1em; letter-spacing: -0.01em; }
-h2 {
-  position: relative;
-  font-size: 1.1em;
-  font-weight: normal;
-  font-variant: small-caps;
-  letter-spacing: 0.08em;
-  margin: 2.4em 0 0.7em;
-  padding-bottom: 0.25em;
-  background: var(--tracks);
-  scroll-margin-top: 1em;
-}
-h2 a.anchor {
-  position: absolute;
-  left: -1.1em;
-  color: #c49a7a;
-  text-decoration: none;
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-h2:hover a.anchor, h2 a.anchor:focus { opacity: 1; }
-h2:target { animation: flash 1.6s ease-out; }
-@keyframes flash { from { background-color: #f1e2d3; } }
+  <body>
+    <header>
+      <h1>Mukhtar Akere</h1>
+      <p class="sub">Senior Software Engineer</p>
+      <p class="links">
+        <a href="https://drive.google.com/file/d/1VqYxfUZT04ZN_TyR1GmrIdhQ85J0gUVQ/view">CV (PDF)</a> &middot;
+        <a href="mailto:akeremukhtar10@gmail.com">Email</a> &middot;
+        <a href="https://github.com/sirrobot01">GitHub</a> &middot;
+        <a href="https://linkedin.com/in/sirrobot01">LinkedIn</a> &middot;
+        <a href="https://blog.biodun.dev/">Blog</a>
+      </p>
+    </header>
 
-p { margin: 0.6em 0; text-wrap: pretty; }
-a {
-  color: #1a4d8f;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.18em;
-  transition: color 0.15s, text-decoration-color 0.15s;
-}
-a:visited { color: #5b3a8c; }
-a:hover { color: #b3261e; text-decoration-thickness: 2px; }
-:focus-visible { outline: 1px dotted #222; outline-offset: 2px; }
-code { font-size: 0.9em; }
+    <main>
+      <section class="about">
+        <h2 id="about"><a class="anchor" href="#about" aria-hidden="true">&sect;</a>About</h2>
+        <p>
+          I am a Senior Software Engineer with 8 years of experience building backend and
+          high-performance systems in Go and Python. My work covers production services, caching,
+          observability, distributed messaging and open-source systems software.
+        </p>
+      </section>
 
-ul { padding-left: 1.2em; margin: 0.4em 0; }
-li { margin: 0 0 0.4em; }
-.projects { list-style: none; padding: 0; }
-.projects li { margin: 0 0 1em; }
+      <section>
+        <h2 id="experience"><a class="anchor" href="#experience" aria-hidden="true">&sect;</a>Experience</h2>
 
-.sub { color: #666; margin: 0; font-style: italic; }
-.links { margin-top: 0.8em; }
-.meta { color: #666; margin: 0; }
-.about p:first-child::first-line { font-variant: small-caps; letter-spacing: 0.03em; }
+        <details name="experience" open>
+          <summary><b>Software Engineer, Crowdmade Inc.</b> <span>Mar 2023 &ndash; present</span></summary>
+          <p class="meta">San Francisco, CA (remote)</p>
+          <ul>
+            <li>Build internal tools and Go microservices for storefront and order workflows on Shopify-integrated stores.</li>
+            <li>Sync orders, products and fulfillment across storefronts through the Shopify GraphQL Admin API.</li>
+            <li>Run payment and store-management systems on AWS, deployed with Docker.</li>
+          </ul>
+        </details>
 
-details { border-bottom: 1px dotted #ddd8c8; }
-details:last-of-type { border-bottom: 0; }
-details::details-content {
-  block-size: 0;
-  overflow: hidden;
-  transition: block-size 0.3s ease, content-visibility 0.3s allow-discrete;
-}
-details[open]::details-content { block-size: auto; }
-summary {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 0 1em;
-  padding: 0.55em 0;
-  cursor: pointer;
-  list-style: none;
-}
-summary::-webkit-details-marker { display: none; }
-summary b::before {
-  content: "\203A";
-  display: inline-block;
-  width: 0.9em;
-  margin-left: -0.9em;
-  color: #999;
-  font-weight: normal;
-  transition: transform 0.2s;
-}
-details[open] summary b::before { transform: rotate(90deg); }
-summary:hover b { text-decoration: underline; text-decoration-color: #ccc; text-underline-offset: 0.18em; }
-summary span { color: #666; font-variant-numeric: lining-nums tabular-nums; font-size: 0.95em; }
-details ul { margin-bottom: 0.9em; }
+        <details name="experience">
+          <summary><b>Software Engineer, Bitnob</b> <span>Feb 2022 &ndash; Mar 2023</span></summary>
+          <p class="meta">Lagos, Nigeria</p>
+          <ul>
+            <li>Built a cross-country airtime and data subscription service in Django and Go, with payments across multiple countries.</li>
+            <li>Fixed critical platform bugs, which improved stability and reduced support tickets.</li>
+            <li>Added observability with Prometheus and Grafana to find production issues faster.</li>
+          </ul>
+        </details>
 
-footer {
-  margin-top: 3em;
-  padding-top: 1em;
-  color: #888;
-  font-size: 0.85em;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 0 1em;
-  background: var(--tracks);
-  background-position: left top;
-}
-#sol { cursor: help; }
-footer a, footer a:visited { color: #888; }
+        <details name="experience">
+          <summary><b>Software Developer, Missinglettr</b> <span>Nov 2020 &ndash; Feb 2022</span></summary>
+          <p class="meta">London, UK (remote)</p>
+          <ul>
+            <li>Designed and built REST APIs for financial and reporting services in Django and Flask.</li>
+            <li>Integrated LLM providers into the product, with prompt versioning and prompt caching.</li>
+          </ul>
+        </details>
 
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, ::details-content { animation: none !important; transition: none !important; }
-}
-@media print {
-  html, body { background: none; font-size: 12pt; }
-  h2 a.anchor, .links, footer a { display: none; }
-  main a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.8em; color: #666; }
-}
-</style>
-</head>
-<body>
+        <details name="experience">
+          <summary><b>Software Engineer, Jallows</b> <span>Jun 2019 &ndash; Apr 2020</span></summary>
+          <p class="meta">Remote</p>
+          <ul>
+            <li>Built REST APIs with Django REST Framework on PostgreSQL and MySQL, with Redis caching and RabbitMQ messaging.</li>
+          </ul>
+        </details>
 
-<header>
-<h1>Mukhtar Akere</h1>
-<p class="sub">Senior Software Engineer</p>
-<p class="links">
-<a href="https://drive.google.com/file/d/1VqYxfUZT04ZN_TyR1GmrIdhQ85J0gUVQ/view">CV (PDF)</a> &middot;
-<a href="mailto:akeremukhtar10@gmail.com">Email</a> &middot;
-<a href="https://github.com/sirrobot01">GitHub</a> &middot;
-<a href="https://linkedin.com/in/sirrobot01">LinkedIn</a> &middot;
-<a href="https://blog.biodun.dev/">Blog</a>
-</p>
-</header>
+        <details name="experience">
+          <summary><b>Backend Developer, Khuddam.ng</b> <span>Jul 2018 &ndash; Jan 2019</span></summary>
+          <p class="meta">Lagos, Nigeria</p>
+          <ul>
+            <li>Built a financial reporting system with Django REST Framework for several thousand monthly active users.</li>
+            <li>Automated deployments with Docker and Supervisord, which reduced deploy time from hours to minutes.</li>
+          </ul>
+        </details>
+      </section>
 
-<main>
-<section class="about">
-<h2 id="about"><a class="anchor" href="#about" aria-hidden="true">&sect;</a>About</h2>
-<p>I am a Senior Software Engineer with 8 years of experience building backend and high-performance systems in Go and Python. My work covers production services, caching, observability, distributed messaging and open-source systems software.</p>
-</section>
+      <section>
+        <h2 id="projects"><a class="anchor" href="#projects" aria-hidden="true">&sect;</a>Selected Projects</h2>
+        <ul class="projects">
+          <li>
+            <a href="https://github.com/sirrobot01/decypharr"><b>decypharr</b></a> &mdash;
+            High-throughput file-streaming server in Go. A FUSE-based architecture streams large files
+            over persistent HTTP connections. I reduced lock contention with sharded range tracking,
+            fixed goroutine leaks found with pprof, and added sparse-file caching with LRU eviction.
+            Maintained for an active self-hosting user base.
+            <br><span class="meta">Go &middot; <span data-repo="decypharr">911</span> GitHub stars</span>
+          </li>
+          <li>
+            <a href="https://github.com/sirrobot01/writ"><b>writ</b></a> &mdash;
+            Guardrails runtime for AI agent actions. Checks actions against declarative contracts:
+            scoped grants, spend bounds, invariants and machine-verified completion, with auditable
+            records. Delegation narrows authority by construction.
+            <br><span class="meta">Go &middot; Apache-2.0</span>
+          </li>
+          <li>
+            <a href="https://github.com/sirrobot01/protodex"><b>protodex</b></a> &mdash;
+            Self-hosted protobuf schema registry. Push/pull with protoc-based validation and
+            multi-language code generation for gRPC, Twirp and gRPC-Gateway.
+            <br><span class="meta">Go</span>
+          </li>
+        </ul>
+        <p>
+          Other work:
+          <a href="https://github.com/sirrobot01/lamba">lamba</a> (self-hosted AWS Lambda),
+          <a href="https://github.com/sirrobot01/hearsay">hearsay</a> (shared observations between operators),
+          <a href="https://github.com/sirrobot01/dbnest">dbnest</a> (self-hosted database manager),
+          <a href="https://github.com/sirrobot01/django-request-viewer">django-request-viewer</a>.
+          All on <a href="https://github.com/sirrobot01">GitHub</a>.
+        </p>
+      </section>
 
-<h2 id="experience"><a class="anchor" href="#experience" aria-hidden="true">&sect;</a>Experience</h2>
-<details name="experience" open>
-<summary><b>Software Engineer, Crowdmade Inc.</b> <span>Mar 2023 &ndash; present</span></summary>
-<p class="meta">San Francisco, CA (remote)</p>
-<ul>
-<li>Build internal tools and Go microservices for storefront and order workflows on Shopify-integrated stores.</li>
-<li>Sync orders, products and fulfillment across storefronts through the Shopify GraphQL Admin API.</li>
-<li>Run payment and store-management systems on AWS, deployed with Docker.</li>
-</ul>
-</details>
+      <section>
+        <h2 id="writing"><a class="anchor" href="#writing" aria-hidden="true">&sect;</a>Writing</h2>
+        <ul>
+          <li><a href="https://blog.biodun.dev/asynchronous-and-periodic-tasks-with-django-using-celery-and-redis">Asynchronous and Periodic Tasks with Django using Celery and Redis</a></li>
+          <li><a href="https://blog.biodun.dev/django-abstract-models">Django Abstract Models</a></li>
+        </ul>
+        <p>More at <a href="https://blog.biodun.dev/">blog.biodun.dev</a>.</p>
+      </section>
 
-<details name="experience">
-<summary><b>Software Engineer, Bitnob</b> <span>Feb 2022 &ndash; Mar 2023</span></summary>
-<p class="meta">Lagos, Nigeria</p>
-<ul>
-<li>Built a cross-country airtime and data subscription service in Django and Go, with payments across multiple countries.</li>
-<li>Fixed critical platform bugs, which improved stability and reduced support tickets.</li>
-<li>Added observability with Prometheus and Grafana to find production issues faster.</li>
-</ul>
-</details>
+      <section>
+        <h2 id="skills"><a class="anchor" href="#skills" aria-hidden="true">&sect;</a>Skills</h2>
+        <p>
+          <b>Languages:</b> Go, Python, JavaScript/TypeScript<br>
+          <b>Systems &amp; data:</b> PostgreSQL, MySQL, Redis, Elasticsearch, Kafka, RabbitMQ, gRPC, WebSockets<br>
+          <b>Cloud &amp; infrastructure:</b> AWS (EC2, S3, Lambda, RDS), GCP, Docker, Kubernetes, Linux<br>
+          <b>Backend:</b> Django, DRF, Flask, FastAPI, Celery, Gin, sqlc, GORM, REST, GraphQL<br>
+          <b>Observability &amp; tooling:</b> Prometheus, Grafana, Datadog, Sentry, GitHub/GitLab Actions, Jenkins, pytest
+        </p>
+      </section>
 
-<details name="experience">
-<summary><b>Software Developer, Missinglettr</b> <span>Nov 2020 &ndash; Feb 2022</span></summary>
-<p class="meta">London, UK (remote)</p>
-<ul>
-<li>Designed and built REST APIs for financial and reporting services in Django and Flask.</li>
-<li>Integrated LLM providers into the product, with prompt versioning and prompt caching.</li>
-</ul>
-</details>
+      <section>
+        <h2 id="contact"><a class="anchor" href="#contact" aria-hidden="true">&sect;</a>Contact</h2>
+        <p>
+          Email: <a href="mailto:akeremukhtar10@gmail.com">akeremukhtar10@gmail.com</a><br>
+          GitHub: <a href="https://github.com/sirrobot01">github.com/sirrobot01</a><br>
+          LinkedIn: <a href="https://linkedin.com/in/sirrobot01">linkedin.com/in/sirrobot01</a>
+        </p>
+      </section>
+    </main>
 
-<details name="experience">
-<summary><b>Software Engineer, Jallows</b> <span>Jun 2019 &ndash; Apr 2020</span></summary>
-<p class="meta">Remote</p>
-<ul>
-<li>Built REST APIs with Django REST Framework on PostgreSQL and MySQL, with Redis caching and RabbitMQ messaging.</li>
-</ul>
-</details>
-
-<details name="experience">
-<summary><b>Backend Developer, Khuddam.ng</b> <span>Jul 2018 &ndash; Jan 2019</span></summary>
-<p class="meta">Lagos, Nigeria</p>
-<ul>
-<li>Built a financial reporting system with Django REST Framework for several thousand monthly active users.</li>
-<li>Automated deployments with Docker and Supervisord, which reduced deploy time from hours to minutes.</li>
-</ul>
-</details>
-
-<h2 id="projects"><a class="anchor" href="#projects" aria-hidden="true">&sect;</a>Selected Projects</h2>
-<ul class="projects">
-<li><a href="https://github.com/sirrobot01/decypharr"><b>decypharr</b></a> &mdash;
-High-throughput file-streaming server in Go. A FUSE-based architecture streams large files over persistent HTTP connections. I reduced lock contention with sharded range tracking, fixed goroutine leaks found with pprof, and added sparse-file caching with LRU eviction. Maintained for an active self-hosting user base.
-<br><span class="meta">Go &middot; <span data-repo="decypharr">911</span> GitHub stars</span></li>
-<li><a href="https://github.com/sirrobot01/writ"><b>writ</b></a> &mdash;
-Guardrails runtime for AI agent actions. Checks actions against declarative contracts: scoped grants, spend bounds, invariants and machine-verified completion, with auditable records. Delegation narrows authority by construction.
-<br><span class="meta">Go &middot; Apache-2.0</span></li>
-<li><a href="https://github.com/sirrobot01/protodex"><b>protodex</b></a> &mdash;
-Self-hosted protobuf schema registry. Push/pull with protoc-based validation and multi-language code generation for gRPC, Twirp and gRPC-Gateway.
-<br><span class="meta">Go</span></li>
-</ul>
-<p>Other work: <a href="https://github.com/sirrobot01/lamba">lamba</a> (self-hosted AWS Lambda),
-<a href="https://github.com/sirrobot01/hearsay">hearsay</a> (shared observations between operators),
-<a href="https://github.com/sirrobot01/dbnest">dbnest</a> (self-hosted database manager),
-<a href="https://github.com/sirrobot01/django-request-viewer">django-request-viewer</a>.
-All on <a href="https://github.com/sirrobot01">GitHub</a>.</p>
-
-<h2 id="writing"><a class="anchor" href="#writing" aria-hidden="true">&sect;</a>Writing</h2>
-<ul>
-<li><a href="https://blog.biodun.dev/asynchronous-and-periodic-tasks-with-django-using-celery-and-redis">Asynchronous and Periodic Tasks with Django using Celery and Redis</a></li>
-<li><a href="https://blog.biodun.dev/django-abstract-models">Django Abstract Models</a></li>
-</ul>
-<p>More at <a href="https://blog.biodun.dev/">blog.biodun.dev</a>.</p>
-
-<h2 id="skills"><a class="anchor" href="#skills" aria-hidden="true">&sect;</a>Skills</h2>
-<p><b>Languages:</b> Go, Python, JavaScript/TypeScript<br>
-<b>Systems &amp; data:</b> PostgreSQL, MySQL, Redis, Elasticsearch, Kafka, RabbitMQ, gRPC, WebSockets<br>
-<b>Cloud &amp; infrastructure:</b> AWS (EC2, S3, Lambda, RDS), GCP, Docker, Kubernetes, Linux<br>
-<b>Backend:</b> Django, DRF, Flask, FastAPI, Celery, Gin, sqlc, GORM, REST, GraphQL<br>
-<b>Observability &amp; tooling:</b> Prometheus, Grafana, Datadog, Sentry, GitHub/GitLab Actions, Jenkins, pytest</p>
-
-<h2 id="contact"><a class="anchor" href="#contact" aria-hidden="true">&sect;</a>Contact</h2>
-<p>Email: <a href="mailto:akeremukhtar10@gmail.com">akeremukhtar10@gmail.com</a><br>
-GitHub: <a href="https://github.com/sirrobot01">github.com/sirrobot01</a><br>
-LinkedIn: <a href="https://linkedin.com/in/sirrobot01">linkedin.com/in/sirrobot01</a></p>
-</main>
-
-<footer><span>Last updated October 2026 &middot; <span id="sol" title="Jezero Crater">Sol 2,002</span></span> <a href="#">&uarr; top</a></footer>
-
-<script>
-// Update star counts from GitHub. The numbers in the page are the fallback.
-(function () {
-  var KEY = 'gh-stars', TTL = 3600000;
-  function render(stars) {
-    document.querySelectorAll('[data-repo]').forEach(function (el) {
-      var n = stars[el.dataset.repo];
-      if (n != null) el.textContent = n.toLocaleString();
-    });
-  }
-  try {
-    var c = JSON.parse(localStorage.getItem(KEY));
-    if (c && Date.now() - c.t < TTL) return render(c.stars);
-  } catch (e) {}
-  fetch('https://api.github.com/users/sirrobot01/repos?per_page=100')
-    .then(function (r) { if (!r.ok) throw r; return r.json(); })
-    .then(function (repos) {
-      var stars = {};
-      repos.forEach(function (r) { stars[r.name] = r.stargazers_count; });
-      render(stars);
-      try { localStorage.setItem(KEY, JSON.stringify({ t: Date.now(), stars: stars })); } catch (e) {}
-    })
-    .catch(function () {});
-})();
-</script>
-<script>
-// Perseverance landed 2021-02-18 20:55 UTC at about 15:53 local mean solar time on sol 0.
-var sol = Math.floor((Date.now() - Date.UTC(2021, 1, 18, 20, 55)) / 88775244 + 0.662);
-document.getElementById('sol').textContent = 'Sol ' + sol.toLocaleString('en-US');
-
-// Print every role, not only the open one.
-addEventListener('beforeprint', function () {
-  document.querySelectorAll('details').forEach(function (d) { d.removeAttribute('name'); d.open = true; });
-});
-</script>
-</body>
+    <footer>
+      <span>Last updated October 2026 &middot; <span id="sol" title="Jezero Crater">Sol 2,002</span></span>
+      <a href="#">&uarr; top</a>
+    </footer>
+  </body>
 </html>
