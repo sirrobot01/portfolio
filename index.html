@@ -63,9 +63,9 @@
       <section class="about">
         <h2 id="about"><a class="anchor" href="#about" aria-hidden="true">&sect;</a>About</h2>
         <p>
-          I am a Senior Software Engineer with 8 years of experience building backend and
-          high-performance systems in Go and Python. My work covers production services, caching,
-          observability, distributed messaging and open-source systems software.
+          I am a Senior Software Engineer with 8 years of experience in Go and Python. I own order,
+          fulfillment and payment reconciliation services for thousands of Shopify stores, and I built
+          a payment platform used across seven countries. I also maintain open-source systems software.
         </p>
       </section>
 
@@ -76,9 +76,12 @@
           <summary><b>Senior Software Engineer, Crowdmade Inc.</b> <span>Mar 2023 &ndash; present</span></summary>
           <p class="meta">San Francisco, CA (remote)</p>
           <ul>
-            <li>Build internal tools and Go microservices for storefront and order workflows on Shopify-integrated stores.</li>
-            <li>Sync orders, products and fulfillment across storefronts through the Shopify GraphQL Admin API.</li>
-            <li>Run payment and store-management systems on AWS, deployed with Docker.</li>
+            <li>Own the order fulfillment, fulfillment order, distributor sync and customer support microservices in Go and Django on AWS. Report directly to the CTO.</li>
+            <li>Built order and fulfillment sync for thousands of Shopify stores on the GraphQL Admin API, to end manual retries by customer support and missing orders.</li>
+            <li>Designed the sync to stay within Shopify's API rate limits across thousands of stores.</li>
+            <li>Built payment reconciliation with Shopify.</li>
+            <li>Work directly with customer support and operations teams on order and fulfillment problems.</li>
+            <li>Review code and mentor engineers on the team.</li>
           </ul>
         </details>
 
@@ -86,9 +89,10 @@
           <summary><b>Software Engineer, Bitnob</b> <span>Feb 2022 &ndash; Mar 2023</span></summary>
           <p class="meta">Lagos, Nigeria</p>
           <ul>
-            <li>Built a cross-country airtime and data subscription service in Django and Go, with payments across multiple countries.</li>
-            <li>Fixed critical platform bugs, which improved stability and reduced support tickets.</li>
-            <li>Added observability with Prometheus and Grafana to find production issues faster.</li>
+            <li>Built the value-added services platform for airtime and data end to end in Django and Go, with payments across 7 countries. Led the engineers who worked on it.</li>
+            <li>Designed provider failover and idempotent payment requests.</li>
+            <li>Packaged shared payment logic into a reusable payment kit.</li>
+            <li>Cut support tickets by 60% by diagnosing and fixing critical production bugs.</li>
           </ul>
         </details>
 
@@ -96,8 +100,10 @@
           <summary><b>Software Developer, Missinglettr</b> <span>Nov 2020 &ndash; Feb 2022</span></summary>
           <p class="meta">London, UK (remote)</p>
           <ul>
+            <li>Built LLM content generation that drafted social posts from each user's interests and past posts, with versioned prompts.</li>
+            <li>Cut LLM provider calls by half through prompt caching.</li>
+            <li>Integrated the LinkedIn API for automatic posting, and added time-slot scheduling for queued posts.</li>
             <li>Designed and built REST APIs for financial and reporting services in Django and Flask.</li>
-            <li>Integrated LLM providers into the product, with prompt versioning and prompt caching.</li>
           </ul>
         </details>
 
@@ -132,9 +138,9 @@
           </li>
           <li>
             <a href="https://github.com/sirrobot01/writ"><b>writ</b></a> &mdash;
-            Guardrails runtime for AI agent actions. Checks actions against declarative contracts:
-            scoped grants, spend bounds, invariants and machine-verified completion, with auditable
-            records. Delegation narrows authority by construction.
+            Records and limits the tool calls of AI coding agents (Claude Code, Codex, Cursor,
+            OpenCode) through their native hooks, and stops calls outside the granted set before they
+            run. Writ files add scoped grants, spend budgets and machine-checked completion.
             <br><span class="meta">Go &middot; Apache-2.0</span>
           </li>
           <li>
@@ -167,8 +173,8 @@
         <h2 id="skills"><a class="anchor" href="#skills" aria-hidden="true">&sect;</a>Skills</h2>
         <p>
           <b>Languages:</b> Go, Python, JavaScript/TypeScript<br>
-          <b>Systems &amp; data:</b> PostgreSQL, MySQL, Redis, Elasticsearch, Kafka, RabbitMQ, gRPC, WebSockets<br>
-          <b>Cloud &amp; infrastructure:</b> AWS (EC2, S3, Lambda, RDS), GCP, Docker, Kubernetes, Linux<br>
+          <b>Systems &amp; data:</b> PostgreSQL, MySQL, MongoDB, Redis, Elasticsearch, Kafka, RabbitMQ, gRPC, WebSockets<br>
+          <b>Cloud &amp; infrastructure:</b> AWS (EC2, S3, Lambda, RDS, SQS), GCP, Terraform, Docker, Kubernetes, Linux<br>
           <b>Backend:</b> Django, DRF, Flask, FastAPI, Celery, Gin, sqlc, GORM, REST, GraphQL<br>
           <b>Observability &amp; tooling:</b> Prometheus, Grafana, Datadog, Sentry, GitHub/GitLab Actions, Jenkins, pytest
         </p>
